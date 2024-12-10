@@ -35,6 +35,9 @@ pub fn reference_counting(filename: &str) ->  RefCountMem {
                 // numbers is given to you and will correctly represent the file, you just need to handle the garbage collection now
 
                 let index = numbers.remove(0);
+                if (h[index as usize].1) == 0{
+                    continue;
+                }
                 h[index as usize].0 = Some(numbers.clone());
                 for number in numbers{
                     h[number as usize].1 = h[number as usize].1 + 1;
